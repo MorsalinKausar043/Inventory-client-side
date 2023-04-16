@@ -49,6 +49,7 @@ const Login = () => {
                   placeholder="Inter Email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
+                  required
                 />
               </div>
               {/* user password field  */}
@@ -66,6 +67,7 @@ const Login = () => {
                   placeholder="******************"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  required
                 />
               </div>
               <div className="flex flex-col items-center justify-between">
