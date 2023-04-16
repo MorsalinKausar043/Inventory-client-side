@@ -17,7 +17,7 @@ const Login = () => {
     <>
       <Layout title={"Inventory | Sign In"}>
         <main className="w-screen h-screen flex justify-center items-center flex-col bg-blue-100">
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-lg px-2 md:px-0">
             <form
               onSubmit={handleSubmit}
               className="bg-white shadow-md rounded-lg shadow-blue-100/20 px-8 pt-6 pb-8 mb-4"

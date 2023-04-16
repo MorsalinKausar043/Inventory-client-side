@@ -6,8 +6,13 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { GoGraph } from "react-icons/go";
 import { FaUserFriends } from "react-icons/fa";
 import { CgUnavailable } from "react-icons/cg";
+import { useDispatch, useSelector } from "react-redux";
+import { modelEvent } from "../../features/filter/filterSlice";
+import Model from "./model/Model";
 
 const Home = () => {
+  const {model} = useSelector(state => state.filter);
+  const dispatch = useDispatch();
   const NavButtonData = [
     {
       id: 1,
@@ -52,22 +57,24 @@ const Home = () => {
         {/* dashboard nav button  */}
         <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {NavButtonData.map((data) => (
-            <>
               <Link key={data.id} href={data.link}>
                 <NavButton {...data} />
               </Link>
-            </>
           ))}
         </div>
         {/* mini button  */}
         <div className="mt-5">
-          <button className="bg-indigo-500 hover:bg-indigo-600 drop-shadow-xl shadow-indigo-500/40 text-white font-bold py-2 px-4 rounded-full">
+          <button
+            onClick={() => dispatch(modelEvent(true))}
+            className="bg-indigo-500 hover:bg-indigo-600 drop-shadow-xl shadow-indigo-500/40 text-white font-bold py-2 px-4 rounded-full"
+          >
             Add New Product
           </button>
-          <button className="bg-teal-500 hover:bg-teal-600 drop-shadow-xl shadow-teal-500/40 text-white font-bold py-2 px-4 rounded-full ml-2">
+          <button className="bg-teal-500 hover:bg-teal-600 drop-shadow-xl shadow-teal-500/40 text-white font-bold py-2 px-4 rounded-full mt-2 md:mt-0 ml-2">
             Sell Product
           </button>
         </div>
+        {model && <Model/>}
       </section>
     </main>
   );
