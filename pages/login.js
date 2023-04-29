@@ -1,17 +1,19 @@
 import { useState } from "react";
 import Layout from "../components/layout/Layout";
 import { MdInvertColors } from "react-icons/md";
+import { BiShowAlt, BiHide } from "react-icons/bi";
 import { useRouter } from "next/router";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passToggle, setPassToggle] = useState(false);
   const router = useRouter();
   // submit form data
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`email : ${email} and password ${password}`);
-    router.push("/")
+    router.push("/");
   };
   return (
     <>
@@ -53,7 +55,7 @@ const Login = () => {
                 />
               </div>
               {/* user password field  */}
-              <div className="mb-6">
+              <div className="mb-6 relative">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   htmlFor="password"
@@ -61,14 +63,25 @@ const Login = () => {
                   Password
                 </label>
                 <input
-                  className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  className={`shadow appearance-none border ${
+                    password ? "border-sky-500" : "border-red-500"
+                  } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                   id="password"
-                  type="password"
+                  type={passToggle ? "text" : "password"}
                   placeholder="******************"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   required
                 />
+                {/* show hide icon  */}
+                <div
+                  onClick={() => setPassToggle(!passToggle)}
+                  className="absolute right-5 top-[50%] cursor-pointer"
+                >
+                  <span className="inline-block text-lg drop-shadow-lg shadow-gray-400/60 hover:text-blue-500 transition">
+                    {passToggle ? <BiShowAlt /> : <BiHide />}
+                  </span>
+                </div>
               </div>
               <div className="flex flex-col items-center justify-between">
                 <button
@@ -77,12 +90,21 @@ const Login = () => {
                 >
                   Sign In
                 </button>
-                <button disabled className="border mt-3 border-blue-400 w-full font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button
+                  disabled
+                  title="google auth not available"
+                  className="border mt-3 border-blue-400 w-full font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
                   Google Sign In
                 </button>
               </div>
             </form>
-            <p className="text-center text-gray-500 text-xs">
+            <p
+              className="
+              text-center
+             text-gray-500 text-xs
+             "
+            >
               &copy;2023 Acme Corp. All rights reserved.
             </p>
           </div>
