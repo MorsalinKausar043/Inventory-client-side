@@ -1,7 +1,5 @@
 import Link from "next/link";
 import NavButton from "./nav_button/NavButton";
-import NavTitle from "./nav_button/NavTitle";
-import Sidebar from "./sidebar/Sidebar";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { GoGraph } from "react-icons/go";
 import { FaUserFriends } from "react-icons/fa";
@@ -19,7 +17,7 @@ const Home = () => {
       cls: `bg-sky-500`,
       data: `01`,
       title: "Total Products",
-      link: "/login",
+      link: "/products",
       icon: <MdOutlineShoppingBag />,
     },
     {
@@ -27,7 +25,7 @@ const Home = () => {
       cls: `bg-green-500`,
       data: `02`,
       title: "বাকির হিসাব",
-      link: "/login",
+      link: "/account",
       icon: <GoGraph />,
     },
     {
@@ -35,7 +33,7 @@ const Home = () => {
       cls: `bg-yellow-500`,
       data: `03`,
       title: "আজকের লেনদেন",
-      link: "/login",
+      link: "/transaction",
       icon: <FaUserFriends />,
     },
     {
@@ -48,11 +46,8 @@ const Home = () => {
     },
   ];
   return (
-    <main className="flex gap-6">
-      <Sidebar />
-      <section className="my-6 px-2 md:px-6 font-semibold w-full">
-        {/* dashboard title  */}
-        <NavTitle />
+      <main>
+        
 
         {/* dashboard nav button  */}
         <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -75,8 +70,7 @@ const Home = () => {
           </button>
         </div>
         {model && <Model/>}
-      </section>
-    </main>
+      </main>
   );
 };
 

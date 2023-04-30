@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import { FaTachometerAlt } from "react-icons/fa";
 
 const NavTitle = () => {
+  const { route } = useRouter();
   return (
     <>
       <div className="flex justify-between items-center">
@@ -13,7 +15,11 @@ const NavTitle = () => {
             <FaTachometerAlt />
           </span>
           <h1>Home {`>`} </h1>
-          <span className="text-gray-400 ml-1">Dashboard</span>
+          <span className="text-gray-400 ml-1">
+            {route === "/"
+              ? "Dashboard"
+              : route.slice(1,2).toUpperCase() + route.slice(2)}
+          </span>
         </div>
       </div>
     </>

@@ -20,7 +20,7 @@ const NavButton = ({ cls, data, title, icon }) => {
           </div>
           {/* top right side  */}
           <div>
-            <span className="text-8xl text-gray-500">
+            <span className="text-7xl lg:text-8xl text-gray-500">
               {icon}
             </span>
           </div>

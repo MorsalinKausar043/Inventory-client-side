@@ -11,9 +11,14 @@ const Sidebar = () => {
   const [path, setPath] = useState("");
   const menus = [
     { name: "dashboard", link: "/", icon: MdOutlineDashboard },
-    { name: "user", link: "/", icon: AiOutlineUser },
-    { name: "messages", link: "/", icon: FiMessageSquare },
-    { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
+    { name: "products", link: "/products", icon: AiOutlineUser },
+    { name: "account", link: "/account", icon: FiMessageSquare },
+    {
+      name: "transaction",
+      link: "/transaction",
+      icon: TbReportAnalytics,
+      margin: true,
+    },
     { name: "File Manager", link: "/", icon: FiFolder },
     { name: "Cart", link: "/", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
